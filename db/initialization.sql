@@ -2,7 +2,7 @@ USE MenuEasePay;
 GO
 
 -- Додавання даних до таблиці DishCategories
-INSERT INTO DishCategories (CategoryName)
+INSERT INTO DishCategory (CategoryName)
 VALUES ('Appetizer'),
        ('Main Course'),
        ('Dessert'),
@@ -19,7 +19,7 @@ VALUES ('Appetizer'),
        ('Tea');
 
 -- Додавання даних до таблиці Dishes
-INSERT INTO Dishes (Name, Description, Price, CategoryID)
+INSERT INTO Dish (Name, Description, Price, CategoryID)
 VALUES ('Margherita Pizza', 'Classic tomato sauce, fresh mozzarella, basil', 12.99, 5),
        ('Chicken Alfredo', 'Grilled chicken, fettuccine pasta, creamy Alfredo sauce', 15.99, 6),
        ('Caesar Salad', 'Romaine lettuce, croutons, Parmesan cheese, Caesar dressing', 8.50, 4),
@@ -41,22 +41,22 @@ VALUES ('Margherita Pizza', 'Classic tomato sauce, fresh mozzarella, basil', 12.
        ('Chicken Caesar Wrap', 'Grilled chicken, romaine lettuce, Caesar dressing', 9.99, 4),
        ('Seafood Paella', 'Saffron rice, mixed seafood, peas, bell peppers', 20.50, 6),
        ('Classic Mojito', 'White rum, mint, lime, soda water', 8.50,
-        (SELECT CategoryID FROM DishCategories WHERE CategoryName = 'Alcoholic Drink')),
+        (SELECT CategoryID FROM DishCategory WHERE CategoryName = 'Alcoholic Drink')),
        ('Iced Tea', 'Refreshing black tea, served over ice', 2.50,
-        (SELECT CategoryID FROM DishCategories WHERE CategoryName = 'Non-Alcoholic Drink')),
+        (SELECT CategoryID FROM DishCategory WHERE CategoryName = 'Non-Alcoholic Drink')),
        ('Mango Smoothie', 'Blended mango, yogurt, and ice', 4.99,
-        (SELECT CategoryID FROM DishCategories WHERE CategoryName = 'Non-Alcoholic Drink')),
+        (SELECT CategoryID FROM DishCategory WHERE CategoryName = 'Non-Alcoholic Drink')),
        ('Strawberry Lemonade', 'Freshly squeezed lemonade with strawberry puree', 3.99,
-        (SELECT CategoryID FROM DishCategories WHERE CategoryName = 'Non-Alcoholic Drink')),
+        (SELECT CategoryID FROM DishCategory WHERE CategoryName = 'Non-Alcoholic Drink')),
        ('Cappuccino', 'Espresso with steamed milk and foam', 4.50,
-        (SELECT CategoryID FROM DishCategories WHERE CategoryName = 'Coffee'));
+        (SELECT CategoryID FROM DishCategory WHERE CategoryName = 'Coffee'));
 
-INSERT INTO Users (Username, PasswordHash)
+INSERT INTO [User] (Username, PasswordHash)
 VALUES ('john_doe', 'hashed_password1'),
        ('jane_smith', 'hashed_password2'),
        ('user3', 'hashed_password3');
 
-INSERT INTO Orders (UserID, OrderDate, IsPaid)
+INSERT INTO [Order] (UserID, OrderDate, IsPaid)
 VALUES (1, GETDATE(), 1),
        (2, GETDATE(), 0),
        (3, GETDATE(), 1);
